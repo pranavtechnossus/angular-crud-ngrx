@@ -17,13 +17,26 @@ import { PageNotFoundComponent } from './home/page-not-found.component';
 /* Feature Modules */
 import { UserModule } from './user/user.module';
 
+/* NgRx */
+import { StoreModule } from '@ngrx/store';
+
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(ProductData),
     UserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({})
+    // StoreModule.forRoot({},
+    //   {
+    //     runtimeChecks: {
+    //       strictStateImmutability: true,
+    //       strictActionImmutability: true,
+    //       strictStateSerializability: true,
+    //       strictActionSerializability: true
+    //     }
+    //   })
   ],
   declarations: [
     AppComponent,
