@@ -7,6 +7,9 @@ import { AuthService } from './auth.service';
 /* NgRx */
 import { Store, select } from '@ngrx/store';
 
+import * as fromRoot from '../state/app.state';
+import * as fromUser from './state/user.reducer';
+
 @Component({
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
@@ -17,20 +20,16 @@ export class LoginComponent implements OnInit {
 
   maskUserName: boolean;
 
-  constructor(private store: Store<any>,
+  constructor(private store: Store<fromRoot.State>,
               private authService: AuthService,
               private router: Router) {
   }
 
   ngOnInit(): void {
     // TODO: Unsubscribe
-    this.store.pipe(select('users')).subscribe(
-      users => {
-        if (users) {
-          this.maskUserName = users.maskUserName;
-        }
-      });
-  }
+    this.store.pipe(select(fromUser.getMaskUserName)).subscribe(
+      users =>  this.maskUserName = users);
+    }
 
   cancel(): void {
     this.router.navigate(['welcome']);
