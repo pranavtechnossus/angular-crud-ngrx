@@ -10,7 +10,7 @@ import { Product } from '../../product';
 })
 export class ProductListComponent {
   pageTitle = 'Products';
-  @Input() erroMessage: string;
+  @Input() errorMessage: string;
   @Input() displayCode: boolean;
   @Input() products: Product[];
   @Input() selectedProduct: Product;

@@ -1,14 +1,13 @@
 <div class='row'>
   <div class='col-md-4'>
     <pm-product-list
-      [erroMessage] = "errorMessages$ | async"
-      [displayCode] = "displayCode$ | async"
-      [products] = "products$ | async"
-      [selectedProduct] = "selectedProduct$ | async"
-      (checked) = "checkedEvent($event)"
-      (initializeNewProduct) = "newProduct()"
-      (selected) = "productSelected($event)"
-    ></pm-product-list>
+    [displayCode]="displayCode$ | async"
+    [products]="products$ | async"
+    [selectedProduct]="selectedProduct$ | async"
+	  [errorMessage]="errorMessage$ | async"
+    (checked)="checkChanged($event)"
+    (initializeNewProduct)="(newProduct())"
+    (selected)="productSelected($event)"></pm-product-list>
   </div>
   <div class='col-md-8'>
     <pm-product-edit></pm-product-edit>
